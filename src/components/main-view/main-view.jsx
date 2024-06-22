@@ -9,6 +9,12 @@ export const MainView = () => {
     {id: 3, title: "Clue"}
   ]);
 
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  if (selectedMovie) {
+    return <MovieView movie={selectedMovie} />;
+  }
+
   if (movies.length === 0) {
     return <div>The list is empty!</div>;
   }
@@ -16,7 +22,7 @@ export const MainView = () => {
   return (
     <div>
       {movies.map((movie) => {
-        <MovieCard />
+        <MovieCard key={movie.id} movie={movie}/>
       })}
     </div>
   );
