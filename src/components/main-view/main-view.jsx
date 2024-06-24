@@ -4,9 +4,9 @@ import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([
-    {id: 1, title: "Challengers"},
-    {id: 2, title: "Easy A"},
-    {id: 3, title: "Clue"}
+    {id: 1, title: "Challengers", year: "2024", synopsis:"", genre: "", director: ""},
+    {id: 2, title: "Easy A", year: "2010", synopsis:"", genre: "", director: ""},
+    {id: 3, title: "Clue", year: "1985", synopsis:"", genre: "", director: ""}
   ]);
 
   const [selectedMovie, setSelectedMovie] = useState(null);
