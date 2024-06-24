@@ -142,14 +142,14 @@
       this[globalName] = mainExports;
     }
   }
-})({"8pHlx":[function(require,module,exports) {
+})({"khLUv":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 var HMR_USE_SSE = false;
-module.bundle.HMR_BUNDLE_ID = "022c1b16b4b6dfad";
+module.bundle.HMR_BUNDLE_ID = "7a6896a1d498c491";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -2944,25 +2944,22 @@ process.umask = function() {
     return 0;
 };
 
-},{}],"d8Dch":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$98a3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{}],"g9R30":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$046e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$98a3.prelude(module);
+$parcel$ReactRefreshHelpers$046e.prelude(module);
 
 try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
-var _mainView = require("./components/main-view/main-view");
+var _mainView = require("./src/components/main-view/main-view");
 // Import statement to indicate that you need to bundle `./index.scss`
 var _indexScss = require("./index.scss");
 // Main component (will eventually use all the others)
 const MyFlixApplication = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
-        fileName: "src/index.jsx",
+        fileName: "index.jsx",
         lineNumber: 10,
         columnNumber: 10
     }, undefined);
@@ -2973,19 +2970,19 @@ const container = document.querySelector("#root");
 const root = (0, _client.createRoot)(container);
 // Tells React to render your app in the root DOM element
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MyFlixApplication, {}, void 0, false, {
-    fileName: "src/index.jsx",
+    fileName: "index.jsx",
     lineNumber: 18,
     columnNumber: 13
 }, undefined));
 var _c;
 $RefreshReg$(_c, "MyFlixApplication");
 
-  $parcel$ReactRefreshHelpers$98a3.postlude(module);
+  $parcel$ReactRefreshHelpers$046e.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"aSDhp","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1y3EG"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./src/components/main-view/main-view":"4gflv","./index.scss":"93cso","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1y3EG"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -27240,7 +27237,6 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MainView", ()=>MainView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
 var _s = $RefreshSig$();
@@ -27277,7 +27273,8 @@ const MainView = ()=>{
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+        children: movies.map((movie)=>{
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                 movie: movie,
                 onMovieClick: (newSelectedMovie)=>{
                     setSelectedMovie(newSelectedMovie);
@@ -27285,8 +27282,9 @@ const MainView = ()=>{
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 26,
-                columnNumber: 7
-            }, undefined))
+                columnNumber: 9
+            }, undefined);
+        })
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
         lineNumber: 24,
@@ -27563,6 +27561,6 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aSDhp","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1y3EG"}],"lJZlQ":[function() {},{}]},["8pHlx","jB1QL","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aSDhp","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"1y3EG"}],"93cso":[function() {},{}]},["khLUv","jB1QL","g9R30"], "g9R30", "parcelRequireaec4")
 
-//# sourceMappingURL=index.b4b6dfad.js.map
+//# sourceMappingURL=index.d498c491.js.map
