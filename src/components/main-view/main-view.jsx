@@ -7,21 +7,20 @@ export const MainView = () => {
 
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  useEffect (() => {
-    fetch("https://testflix2-2b11acffaf24.herokuapp.com/")
+  useEffect(() => {
+    fetch("https://testflix2-2b11acffaf24.herokuapp.com/movies")
       .then((response) => response.json())
       .then((data) => {
-        const moviesFromApi = data.docs.map((doc) => {
+        const moviesFromApi = data.map( movie => {
           return {
-            id: doc.id,
-            title: doc.title,
-            year: doc.year,
-            synopsis: doc.synopsis,
-            genre: doc.genre,
-            director: doc.director 
+            id: movie.key,
+            title: movie.Title,
+            year: movie.Year,
+            synopsis: movie.Synopsis,
+            genre: movie.Genre,
+            director: movie.Director 
           };
         });
-
         setMovies(moviesFromApi);
       });
   }, []);
