@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { LoginView } from "../login-view/login-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
-
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     fetch("https://testflix2-2b11acffaf24.herokuapp.com/movies")
@@ -24,6 +25,11 @@ export const MainView = () => {
         setMovies(moviesFromApi);
       });
   }, []);
+
+  //Checks if there's a user logged in
+  if (!user) {
+    return <LoginView />;
+  }
 
   if (selectedMovie) {
     return (<MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)}/>
