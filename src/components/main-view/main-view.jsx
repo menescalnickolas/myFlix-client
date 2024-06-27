@@ -1,15 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
-  const [movies, setMovies] = useState([
-    {id: 1, title: "Challengers", year: "2024", synopsis:"", genre: "", director: ""},
-    {id: 2, title: "Easy A", year: "2010", synopsis:"", genre: "", director: ""},
-    {id: 3, title: "Clue", year: "1985", synopsis:"", genre: "", director: ""}
-  ]);
+  const [movies, setMovies] = useState([]);
 
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  useEffect(() => {
+    fetch("https://testflix2-2b11acffaf24.herokuapp.com/movies")
+      .then((response) => response.json())
+      .then((data) => {
+        const moviesFromApi = data.map( movie => {
+          return {
+            id: movie.key,
+            title: movie.Title,
+            year: movie.Year,
+            synopsis: movie.Synopsis,
+            genre: movie.Genre,
+            director: movie.Director 
+          };
+        });
+        setMovies(moviesFromApi);
+      });
+  }, []);
 
   if (selectedMovie) {
     return (<MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)}/>
