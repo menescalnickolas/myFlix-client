@@ -7,12 +7,14 @@ const [password, setPassword] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();// this prevents the default behavior of the form which is to reload the entire page
 
+    const url = `https://testflix2-2b11acffaf24.herokuapp.com/login?Username=${encodeURIComponent(username)}&Password=${encodeURIComponent(password)}`;
+
     const data = {
-      access: username,
-      secret: password
+      username: username,
+      password: password
     };
 
-    fetch("https://testflix2-2b11acffaf24.herokuapp.com/login", {
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
