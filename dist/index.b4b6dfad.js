@@ -27276,7 +27276,7 @@ const MainView = ()=>{
         }).then((response)=>response.json()).then((data)=>{
             const moviesFromApi = data.map((movie)=>{
                 return {
-                    id: movie.key,
+                    _id: movie._id,
                     image: movie.Image,
                     title: movie.Title,
                     year: movie.Year,
@@ -27425,7 +27425,7 @@ const MainView = ()=>{
                                                 lineNumber: 103,
                                                 columnNumber: 19
                                             }, void 0)
-                                        }, movie.id, false, {
+                                        }, movie._id, false, {
                                             fileName: "src/components/main-view/main-view.jsx",
                                             lineNumber: 102,
                                             columnNumber: 17
@@ -27484,7 +27484,7 @@ var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 const MovieCard = ({ movie })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-        to: `/movies/${encodeURIComponent(movie.id)}`,
+        to: `/movies/${encodeURIComponent(movie._id)}`,
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
             className: "h-100",
             style: {
@@ -27540,7 +27540,7 @@ MovieCard.propTypes = {
         title: (0, _propTypesDefault.default).string.isRequired,
         year: (0, _propTypesDefault.default).string,
         synopsis: (0, _propTypesDefault.default).string,
-        /*image: PropTypes.node,*/ genre: (0, _propTypesDefault.default).shape({
+        genre: (0, _propTypesDefault.default).shape({
             Name: (0, _propTypesDefault.default).string,
             Description: (0, _propTypesDefault.default).string
         }),
@@ -41898,7 +41898,7 @@ var _s = $RefreshSig$();
 const MovieView = ({ movies })=>{
     _s();
     const { movieId } = (0, _reactRouter.useParams)();
-    const movie = movies.find((m)=>m.id === movieId);
+    const movie = movies.find((m)=>m._id === movieId);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
