@@ -23,6 +23,7 @@ export const MovieCard = ({ movie, user, setUser }) => {
 
   const handleToggleFavorite = async (e) => {
     e.preventDefault();
+    e.stopPropagation();  // Prevent the link from being followed
     console.log("Star clicked!");
   
     try {
@@ -48,8 +49,9 @@ export const MovieCard = ({ movie, user, setUser }) => {
       );
         console.log("Added to favorites:", response.data);
       }
+      const updatedUser = await response.json();
       setIsFavorite(!isFavorite);
-      setUser(response.data);  // Update user state if necessary
+      setUser(updatedUser);  // Update user state with the response data
     } catch (error) {
       console.error("There was an error toggling the favorite status!", error);
     }
