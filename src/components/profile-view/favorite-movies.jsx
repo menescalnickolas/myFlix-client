@@ -28,7 +28,7 @@ export const FavoriteMovies = ({ movies, user }) => {
     axios.delete(`/users/${user.Username}/movies/${movie._id}`)
       .then(response => {
         console.log(response.data);
-        // Optionally, update the UI or the state to reflect the removal of the favorite movie
+        // Update the UI or the state to reflect the removal of the favorite movie here
       })
       .catch(error => {
         console.error("There was an error removing the movie from favorites!", error);
