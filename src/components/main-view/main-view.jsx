@@ -115,7 +115,7 @@ export const MainView = () => {
           {user && (
        <Route 
         path="/profile"
-        element= {<ProfileView user={user} />} 
+        element= {<ProfileView user={user} movies={movies} />} 
         />
        )}
         </Routes>
