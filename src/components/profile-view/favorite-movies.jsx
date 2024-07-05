@@ -6,7 +6,9 @@ export const FavoriteMovies = ({ movies, user }) => {
     axios.post(`/users/${user.Username}/movies/${movie._id}`)
       .then(response => {
         console.log(response.data);
-        // Optionally, update the UI or the state to reflect the new favorite movie
+
+      setIsFavorite(!isFavorite);
+      setUser(updatedUser);
       })
       .catch(error => {
         console.error("There was an error adding the movie to favorites!", error);
@@ -39,7 +41,7 @@ export const FavoriteMovies = ({ movies, user }) => {
       <ul>
         {movies.map(movie => (
           <li key={movie._id}>
-            {movie.Title}
+            {movie.title}
             {user.FavoriteMovies.includes(movie._id) ? (
               <button onClick={() => handleRemoveFavorite(movie._id)}>Remove from Favorites</button>
             ) : (
