@@ -1,20 +1,7 @@
-import React from 'react';
+import React, { useState } from "react";
 import axios from 'axios';
 
 export const FavoriteMovies = ({ movies, user }) => {
-  const handleAddFavorite = (movie) => {
-    axios.post(`/users/${user.Username}/movies/${movie._id}`)
-      .then(response => {
-        console.log(response.data);
-
-      setIsFavorite(!isFavorite);
-      setUser(updatedUser);
-      })
-      .catch(error => {
-        console.error("There was an error adding the movie to favorites!", error);
-      });
-  };
-
   // Ensure movies and user.FavoriteMovies are properly initialized
   if (!movies || !Array.isArray(movies)) {
     return <div>No movies to display</div>;
@@ -24,29 +11,41 @@ export const FavoriteMovies = ({ movies, user }) => {
     return <div>User data is not available</div>;
   }
 
-  const handleRemoveFavorite = (movie) => {
-    axios.delete(`/users/${user.Username}/movies/${movie._id}`)
-      .then(response => {
-        console.log(response.data);
-        // Update the UI or the state to reflect the removal of the favorite movie here
-      })
-      .catch(error => {
-        console.error("There was an error removing the movie from favorites!", error);
+  const [storedToken] = useState(localStorage.getItem("token") || "");
+  const [favMovies, setFavMovies] = useState(user.FavoriteMovies);
+
+  const handleRemoveFavorite = async (movieId) => {
+    try {
+      const response = await fetch(`https://testflix2-2b11acffaf24.herokuapp.com/users/${encodeURIComponent(user.Username)}/movies/${encodeURIComponent(movieId)}`, 
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        }
       });
+
+      if (response.ok) {
+        console.log("Removed from favorites:", movieId);
+        setFavMovies(favMovies.filter(id => id !== movieId));
+        window.location.reload();
+      } else {
+        console.error("Failed to remove from favorites");
+      }
+    } catch (error) {
+      console.error("An error occurred while removing from favorites:", error);
+    }
   };
+
+  const favoriteMoviesList = movies.filter(movie => favMovies.includes(movie._id));
 
   return (
     <div>
       <h2>Your Favorite Movies</h2>
       <ul>
-        {movies.map(movie => (
+        {favoriteMoviesList.map(movie => (
           <li key={movie._id}>
             {movie.title}
-            {user.FavoriteMovies.includes(movie._id) ? (
-              <button onClick={() => handleRemoveFavorite(movie._id)}>Remove from Favorites</button>
-            ) : (
-              <button onClick={() => handleAddFavorite(movie._id)}>Add to Favorites</button>
-            )}
+            <button className="btn" onClick={() => handleRemoveFavorite(movie._id)}>Remove from Favorites</button>
           </li>
         ))}
       </ul>
