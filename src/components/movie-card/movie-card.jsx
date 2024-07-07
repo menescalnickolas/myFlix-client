@@ -29,24 +29,25 @@ export const MovieCard = ({ movie, user, setUser }) => {
     try {
       let response;
       if (isFavorite) {
-        response = await fetch(`/users/${encodeURIComponent(user.Username)}/movies/${encodeURIComponent(movie._id)}`, 
+        response = await fetch(`https://testflix2-2b11acffaf24.herokuapp.com/users/${encodeURIComponent(user.Username)}/movies/${encodeURIComponent(movie._id)}`, 
       {
         method: "DELETE",
           headers: {
             Authorization: `Bearer ${storedToken}`,
           }
       }
-      );
+      ), window.location.reload();
         console.log("Removed from favorites:", response.data);
       } else {
-        response = await fetch(`/users/${encodeURIComponent(user.Username)}/movies/${encodeURIComponent(movie._id)}`,
+        response = await fetch(`https://testflix2-2b11acffaf24.herokuapp.com/users/${encodeURIComponent(user.Username)}/movies/${encodeURIComponent(movie._id)}`,
         {
           method: "POST",
             headers: {
               Authorization: `Bearer ${storedToken}`,
             }
         }
-      );
+      ),
+      window.location.reload();
         console.log("Added to favorites:", response.data);
       }
       const updatedUser = await response.json();
