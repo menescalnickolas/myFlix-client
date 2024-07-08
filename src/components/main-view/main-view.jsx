@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { SearchResults } from "../search-results/search-results";
 
 
 export const MainView = () => {
@@ -118,6 +119,9 @@ export const MainView = () => {
         element= {<ProfileView user={user} movies={movies} />} 
         />
        )}
+       <Route path="/search" element={<SearchResults />}>
+
+       </Route>
         </Routes>
         </Row>
     </BrowserRouter>
