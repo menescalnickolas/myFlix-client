@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./navigation-bar.scss";
 
 export const NavigationBar = ({ user, onLoggedOut, setFilteredMovies, movies }) => {
 
@@ -28,12 +29,12 @@ export const NavigationBar = ({ user, onLoggedOut, setFilteredMovies, movies }) 
   };
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar>
       <Container>
-        <Navbar.Brand as={Link} to="/">
-          MYTESTFLIX
+        <Navbar.Brand as={Link} to="/" className="navbar-brand">
+          CineScope
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {!user && (
@@ -54,7 +55,7 @@ export const NavigationBar = ({ user, onLoggedOut, setFilteredMovies, movies }) 
                 <Nav.Link as={Link} to="/profile">
                   Profile
                 </Nav.Link>
-                <Nav.Link onClick={onLoggedOut} className="btn logoutbutton">Logout</Nav.Link>
+                <Nav.Link onClick={onLoggedOut} className="logoutbutton">Logout</Nav.Link>
               </>
             )}
           </Nav>
