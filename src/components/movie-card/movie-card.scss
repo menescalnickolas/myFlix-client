@@ -1,0 +1,20 @@
+$primary-color: #1f324a;
+$secondary-color: #1561b0;
+$tertiary-color: #5fa6dc;
+$quaternary-color: #91c9f7;
+$quinary-color: #e2f1fd;
+$senary-color: #fff;
+
+.card-body, .card-title, h5, .card-text, .btn-link {
+  background-color: $senary-color;
+  text-decoration: none;
+}
+
+.svg-inline--fa {
+  background-color: $senary-color;
+  color: $secondary-color;
+}
+
+.link {
+  text-decoration: none;
+}
