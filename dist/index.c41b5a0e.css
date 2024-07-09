@@ -1,6 +1,20 @@
+.card-body, .card-title, h5, .card-text, .btn-link {
+  background-color: #fff;
+  text-decoration: none;
+}
+
+.svg-inline--fa {
+  color: #1561b0;
+  background-color: #fff;
+}
+
+.link {
+  text-decoration: none;
+}
+
 .back-button {
-  color: #f5f5f5;
-  background-color: #8b0000;
+  color: #e2f1fd;
+  background-color: #1561b0;
   border: none;
   border-radius: 4px;
   padding: 4px 12px;
@@ -8,6 +22,19 @@
 
 img {
   width: 40%;
+}
+
+.user-info {
+  margin: 30px;
+}
+
+.container, .navbar-light, .navbar-expand, .navbar-brand, .navbar-collapse, .nav-link, .d-flex {
+  background-color: #1561b0 !important;
+}
+
+* {
+  background-color: #fff;
+  text-decoration: none;
 }
 
 .my-flix {
