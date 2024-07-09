@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { UserUpdate } from "./user-update";
 import { UserDelete } from "./user-deregister";
 import { FavoriteMovies } from "./favorite-movies";
+import "./profile-view.scss";
+
 
 export const ProfileView = ({ movies, user: initialUser, onToggleFavorite }) => {
   const [user, setUser] = useState(initialUser);
@@ -30,6 +32,7 @@ export const ProfileView = ({ movies, user: initialUser, onToggleFavorite }) => 
         <UserDelete />
       </div>
       <div className="favorite-movies">
+        <h3>Your favorite movies:</h3>
         <FavoriteMovies movies={movies} user={user} setUser={setUser} onToggleFavorite={onToggleFavorite}/>
       </div>
     </div>
