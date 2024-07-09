@@ -6,6 +6,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import "./movie-card.scss";
 
 export const MovieCard = ({ movie, user, onToggleFavorite }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -61,7 +62,7 @@ export const MovieCard = ({ movie, user, onToggleFavorite }) => {
   */
 
   return (
-  <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+  <Link to={`/movies/${encodeURIComponent(movie._id)}`} className="link">
     <Card className="h-100" style={{ cursor: "pointer" }}>
       <Card.Img variant="top" src={movie.image} className="h-100"/>
       <Card.Body>
