@@ -49,7 +49,7 @@ export const FavoriteMovies = ({ movies, user, onToggleFavorite }) => {
     <div>
       {favoriteMovies.length > 0 ? (
         favoriteMovies.map(movie => (
-          <MovieCard
+          <MovieCard className="h-100"
             key={movie._id}
             movie={movie}
             user={user}
