@@ -68,7 +68,6 @@ export const NavigationBar = ({ user, onLoggedOut, setFilteredMovies, movies }) 
                 value={searchQuery}
                 onChange={handleInputChange}
               />
-              <Button variant="outline-light">Search</Button>
             </Form>
           )}
         </Navbar.Collapse>
