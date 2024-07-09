@@ -32,6 +32,10 @@ img {
   background-color: #1561b0 !important;
 }
 
+.texts {
+  color: #fff;
+}
+
 * {
   background-color: #fff;
   text-decoration: none;
