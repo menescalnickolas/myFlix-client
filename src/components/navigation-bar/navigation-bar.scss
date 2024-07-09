@@ -1,0 +1,12 @@
+$primary-color: #1f324a;
+$secondary-color: #1561b0;
+$tertiary-color: #5fa6dc;
+$quaternary-color: #91c9f7;
+$quinary-color: #e2f1fd;
+
+.container, .navbar-light, .navbar-expand, .navbar-brand, .navbar-collapse, .nav-link, .d-flex {
+  background-color: $secondary-color !important;
+}
+
+
+
