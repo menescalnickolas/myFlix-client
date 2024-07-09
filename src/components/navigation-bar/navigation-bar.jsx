@@ -30,13 +30,13 @@ export const NavigationBar = ({ user, onLoggedOut, setFilteredMovies, movies }) 
 
   return (
     <Navbar>
-      <Container>
+      <Container className="navbar-custom">
         <Navbar.Brand as={Link} to="/" className="navbar-brand">
           CineScope
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto texts">
             {!user && (
               <>
                 <Nav.Link as={Link} to="/login">

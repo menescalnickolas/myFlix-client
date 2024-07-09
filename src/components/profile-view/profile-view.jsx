@@ -5,11 +5,19 @@ import { Link } from "react-router-dom";
 import { UserUpdate } from "./user-update";
 import { UserDelete } from "./user-deregister";
 import { FavoriteMovies } from "./favorite-movies";
+import { Button } from "react-bootstrap";
 import "./profile-view.scss";
 
 
 export const ProfileView = ({ movies, user: initialUser, onToggleFavorite }) => {
   const [user, setUser] = useState(initialUser);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
+
+
 
   return (
     <div>
@@ -22,11 +30,16 @@ export const ProfileView = ({ movies, user: initialUser, onToggleFavorite }) => 
         />
       </div>
       <div className="user-update">
+      <Button variant="primary" onClick={handleShowModal}>
+          Update User Information
+        </Button>
         <UserUpdate
           name={user.Username}
           email={user.Email}
           birthday={user.Birthday}
-          password={user.Password} />
+          password={user.Password} 
+          show={showModal}
+          handleClose={handleCloseModal}/>
       </div>
       <div className="user-delete">
         <UserDelete />
