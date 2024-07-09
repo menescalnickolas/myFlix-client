@@ -16,9 +16,24 @@ export const MainView = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const storedUser = localStorage.getItem("user");
-  const storedToken = localStorage.getItem("token");
   const [filteredMovies, setFilteredMovies] = useState([]);
+
+  const storedToken = localStorage.getItem("token");
+
+  let storedUser;
+  try {
+    storedUser = JSON.parse(localStorage.getItem("user"));
+  } catch (error) {
+    console.error("Error parsing user from localStorage:", error);
+    storedUser = null;
+  }
+
+  useEffect(() => {
+    if (storedToken) {
+      setToken(storedToken);
+      setUser(storedUser);
+    }
+  }, []);
 
   useEffect(() => {
 
@@ -42,6 +57,31 @@ export const MainView = () => {
       });
   }, [token]);
 
+  const handleToggleFavorite = async (movieId) => {
+    if (!user || !token) return;
+
+    const isFavorite = user.FavoriteMovies.includes(movieId);
+    const method = isFavorite ? "DELETE" : "POST";
+
+    try {
+      const response = await fetch(`https://testflix2-2b11acffaf24.herokuapp.com/users/${encodeURIComponent(user.Username)}/movies/${encodeURIComponent(movieId)}`, {
+        method: method,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update favorite movies");
+      }
+
+      const updatedUser = await response.json();
+      setUser(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    } catch (error) {
+      console.error("There was an error toggling the favorite status!", error);
+    }
+  };
 
   return (
     <BrowserRouter>
@@ -49,6 +89,9 @@ export const MainView = () => {
         user={user}
         onLoggedOut={() => {
           setUser(null);
+          setToken(null);
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
         }}
         setFilteredMovies={setFilteredMovies}
         movies={movies}
@@ -110,6 +153,7 @@ export const MainView = () => {
                         <MovieCard
                           movie={movie}
                           user={user}
+                          onToggleFavorite={handleToggleFavorite}
                         />
                       </Col>
                     )) : //Render all movies if no filtering is applied
@@ -118,6 +162,7 @@ export const MainView = () => {
                         <MovieCard
                           movie={movie}
                           user={user}
+                          onToggleFavorite={handleToggleFavorite}
                         />
                       </Col>
                     ))}
@@ -129,7 +174,7 @@ export const MainView = () => {
           {user && (
             <Route
               path="/profile"
-              element={<ProfileView user={user} movies={movies} />}
+              element={<ProfileView user={user} movies={movies} token={token} onToggleFavorite={handleToggleFavorite}/>}
             />
           )}
         </Routes>

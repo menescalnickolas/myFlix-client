@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { MovieCard } from "../movie-card/movie-card";
 import axios from 'axios';
 
-export const FavoriteMovies = ({ movies, user }) => {
+export const FavoriteMovies = ({ movies, user, onToggleFavorite }) => {
+ 
+  const favoriteMovies = movies.filter(movie => user.FavoriteMovies.includes(movie._id));
+
+ /*
   // Ensure movies and user.FavoriteMovies are properly initialized
   if (!movies || !Array.isArray(movies)) {
     return <div>No movies to display</div>;
@@ -38,17 +43,22 @@ export const FavoriteMovies = ({ movies, user }) => {
 
   const favoriteMoviesList = movies.filter(movie => favMovies.includes(movie._id));
 
+  */ 
+
   return (
     <div>
-      <h2>Your Favorite Movies</h2>
-      <ul>
-        {favoriteMoviesList.map(movie => (
-          <li key={movie._id}>
-            {movie.title}
-            <button className="btn" onClick={() => handleRemoveFavorite(movie._id)}>Remove from Favorites</button>
-          </li>
-        ))}
-      </ul>
+      {favoriteMovies.length > 0 ? (
+        favoriteMovies.map(movie => (
+          <MovieCard
+            key={movie._id}
+            movie={movie}
+            user={user}
+            onToggleFavorite={onToggleFavorite}
+          />
+        ))
+      ) : (
+        <p>No favorite movies yet.</p>
+      )}
     </div>
   );
 };

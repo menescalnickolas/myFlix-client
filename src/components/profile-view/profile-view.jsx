@@ -6,7 +6,7 @@ import { UserUpdate } from "./user-update";
 import { UserDelete } from "./user-deregister";
 import { FavoriteMovies } from "./favorite-movies";
 
-export const ProfileView = ({ movies, user: initialUser }) => {
+export const ProfileView = ({ movies, user: initialUser, onToggleFavorite }) => {
   const [user, setUser] = useState(initialUser);
 
   return (
@@ -30,7 +30,7 @@ export const ProfileView = ({ movies, user: initialUser }) => {
         <UserDelete />
       </div>
       <div className="favorite-movies">
-        <FavoriteMovies movies={movies} user={user} setUser={setUser} />
+        <FavoriteMovies movies={movies} user={user} setUser={setUser} onToggleFavorite={onToggleFavorite}/>
       </div>
     </div>
 

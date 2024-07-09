@@ -7,11 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
-export const MovieCard = ({ movie, user, setUser }) => {
+export const MovieCard = ({ movie, user, onToggleFavorite }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const [storedToken, setStoredToken] = useState(
-    localStorage.getItem("token") || ""
-  );
+
 
   useEffect(() => {
     if (user && user.FavoriteMovies && user.FavoriteMovies.includes(movie._id)) {
@@ -21,11 +19,14 @@ export const MovieCard = ({ movie, user, setUser }) => {
     }
   }, [user, movie._id]);
 
-  const handleToggleFavorite = async (e) => {
+  const handleToggleFavorite = (e) => {
     e.preventDefault();
     e.stopPropagation();  // Prevent the link from being followed
     console.log("Star clicked!");
+    onToggleFavorite(movie._id);
+  }
   
+  /*
     try {
       let response;
       if (isFavorite) {
@@ -57,7 +58,8 @@ export const MovieCard = ({ movie, user, setUser }) => {
       console.error("There was an error toggling the favorite status!", error);
     }
   };
-  
+  */
+
   return (
   <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
     <Card className="h-100" style={{ cursor: "pointer" }}>
