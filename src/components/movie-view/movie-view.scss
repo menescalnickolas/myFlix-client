@@ -1,7 +1,13 @@
+$primary-color: #1f324a;
+$secondary-color: #1561b0;
+$tertiary-color: #5fa6dc;
+$quaternary-color: #91c9f7;
+$quinary-color: #e2f1fd;
+
 .back-button {
   padding: 4px 12px 4px 12px;
-  color: whitesmoke;
-  background-color: darkred;
+  color: $quinary-color;
+  background-color: $secondary-color;
   border: none;
   border-radius: 4px;
 }
@@ -9,3 +15,4 @@
 img {
   width: 40%;
 }
+
