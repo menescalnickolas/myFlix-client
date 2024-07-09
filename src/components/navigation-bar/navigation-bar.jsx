@@ -1,15 +1,30 @@
 import React, { useState } from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export const NavigationBar = ({ user, onLoggedOut }) => {
+export const NavigationBar = ({ user, onLoggedOut, setFilteredMovies, movies }) => {
 
   const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    navigate(`/search?query=${searchQuery}`);
+  const handleInputChange = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    filterMovies(query);
+  };
+
+  const filterMovies = (query) => {
+    console.log("Query:", query); //Log the search query
+
+    if (!query) {
+      setFilteredMovies([]); // Clear filtered movies when query is empty
+      return;
+    }
+
+    const filtered = movies.filter((movie) =>
+      movie.title.toLowerCase().includes(query.toLowerCase())
+    );
+    console.log("Filtered Movies:", filtered); // Log the filtered movies
+    setFilteredMovies(filtered);
   };
 
   return (
@@ -39,15 +54,23 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
                 <Nav.Link as={Link} to="/profile">
                   Profile
                 </Nav.Link>
-              <Nav.Link onClick={onLoggedOut} className="btn logoutbutton">Logout</Nav.Link>
-                  <form className="d-flex" role="search" onSubmit={handleSearchSubmit}>
-                    <input className="form-control me-2" type="search" placeholder="Search movie" aria-label="Search" value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}></input>
-                    <button className="btn" type="submit">Search</button>
-                  </form>
+                <Nav.Link onClick={onLoggedOut} className="btn logoutbutton">Logout</Nav.Link>
               </>
             )}
           </Nav>
+          {user && (
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+                value={searchQuery}
+                onChange={handleInputChange}
+              />
+              <Button variant="outline-light">Search</Button>
+            </Form>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
