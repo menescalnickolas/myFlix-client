@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { UserDelete } from "./user-deregister";
+import "./user-update.scss";
 
 
 export const UserUpdate = ({show, handleClose, user, setUser}) => {
@@ -96,9 +98,12 @@ export const UserUpdate = ({show, handleClose, user, setUser}) => {
         required/>
       </Form.Group>
       <br></br>
-      <Button variant="primary" type="submit">
+      <Button variant="light" type="submit">
         Save Changes
       </Button>
+      <div className="user-delete">
+        <UserDelete />
+      </div>
     </Form>
       </Modal.Body>
     </Modal>
