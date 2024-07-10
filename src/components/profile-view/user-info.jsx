@@ -6,11 +6,11 @@ export const UserInfo = ({ email, name, birthday }) => {
   return (
     <div className="user-info card">
       <div className="card-body">
-        <h3 className="card-title">User Information</h3>
+        <h5 className="card-title">User Information</h5>
         <ul clanssName="list-group list-group-flush">
-          <li className="list-group-item">Username:{name}</li>
-          <li className="list-group-item">Email:{email}</li>
-          <li className="list-group-item">Birthday:{birthday}</li>
+          <li className="list-group-item">Username: {name}</li>
+          <li className="list-group-item">Email: {email}</li>
+          <li className="list-group-item">Birthday: {birthday}</li>
         </ul>
       </div>
     </div>

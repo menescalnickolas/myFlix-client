@@ -1,0 +1,8 @@
+.favorite-movies {
+  display: flex;
+  flex-wrap: wrap;
+
+  .col {
+    margin-bottom: 1rem;
+  }
+}

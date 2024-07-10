@@ -6,12 +6,11 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import "./movie-card.scss";
 
-export const MovieCard = ({ movie, user, setUser }) => {
+export const MovieCard = ({ movie, user, onToggleFavorite }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const [storedToken, setStoredToken] = useState(
-    localStorage.getItem("token") || ""
-  );
+
 
   useEffect(() => {
     if (user && user.FavoriteMovies && user.FavoriteMovies.includes(movie._id)) {
@@ -21,45 +20,15 @@ export const MovieCard = ({ movie, user, setUser }) => {
     }
   }, [user, movie._id]);
 
-  const handleToggleFavorite = async (e) => {
+  const handleToggleFavorite = (e) => {
     e.preventDefault();
     e.stopPropagation();  // Prevent the link from being followed
     console.log("Star clicked!");
-  
-    try {
-      let response;
-      if (isFavorite) {
-        response = await fetch(`https://testflix2-2b11acffaf24.herokuapp.com/users/${encodeURIComponent(user.Username)}/movies/${encodeURIComponent(movie._id)}`, 
-      {
-        method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${storedToken}`,
-          }
-      }
-      ), window.location.reload();
-        console.log("Removed from favorites:", response.data);
-      } else {
-        response = await fetch(`https://testflix2-2b11acffaf24.herokuapp.com/users/${encodeURIComponent(user.Username)}/movies/${encodeURIComponent(movie._id)}`,
-        {
-          method: "POST",
-            headers: {
-              Authorization: `Bearer ${storedToken}`,
-            }
-        }
-      ),
-      window.location.reload();
-        console.log("Added to favorites:", response.data);
-      }
-      const updatedUser = await response.json();
-      setIsFavorite(!isFavorite);
-      setUser(updatedUser);  // Update user state with the response data
-    } catch (error) {
-      console.error("There was an error toggling the favorite status!", error);
-    }
-  };
+    onToggleFavorite(movie._id);
+  }
   
   return (
-  <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+  <Link to={`/movies/${encodeURIComponent(movie._id)}`} className="link">
     <Card className="h-100" style={{ cursor: "pointer" }}>
       <Card.Img variant="top" src={movie.image} className="h-100"/>
       <Card.Body>

@@ -1,13 +1,94 @@
+@import "https://fonts.googleapis.com/css2?family=Arsenal&display=swap";
+.card-body, .card-title, h5, .card-text, .btn-link {
+  background-color: #fff;
+  text-decoration: none;
+}
+
+.svg-inline--fa {
+  color: #1561b0;
+  background-color: #fff;
+}
+
+.link {
+  text-decoration: none;
+}
+
 .back-button {
-  color: #f5f5f5;
-  background-color: #8b0000;
+  color: #e2f1fd;
+  background-color: #1561b0;
   border: none;
   border-radius: 4px;
   padding: 4px 12px;
 }
 
 img {
-  width: 40%;
+  width: 80%;
+}
+
+.movie-view {
+  margin-top: 25px;
+}
+
+p {
+  text-align: justify;
+  line-height: 25px;
+}
+
+.synopsis {
+  margin-top: 30px;
+}
+
+.back-button {
+  margin-top: 25px;
+}
+
+.modal {
+  line-height: 20px;
+}
+
+.user-delete {
+  margin-left: 330px;
+}
+
+.favorite-movies {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.favorite-movies .col {
+  margin-bottom: 1rem;
+}
+
+.user-info {
+  margin: 30px;
+}
+
+.user-update {
+  margin-bottom: 50px;
+  margin-left: 60px;
+}
+
+.title {
+  margin: 0 auto 25px;
+}
+
+.navbar-custom {
+  margin-bottom: 25px;
+}
+
+.logoutbutton {
+  margin-left: 15px;
+}
+
+.navbar-brand {
+  font-family: Arsenal, sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+* {
+  background-color: #fff;
+  text-decoration: none;
 }
 
 .my-flix {
