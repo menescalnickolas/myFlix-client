@@ -29,9 +29,9 @@ export const NavigationBar = ({ user, onLoggedOut, setFilteredMovies, movies }) 
   };
 
   return (
-    <Navbar>
-      <Container className="navbar-custom">
-        <Navbar.Brand as={Link} to="/" className="navbar-brand">
+    <Navbar className="navbar-custom">
+      <Container >
+        <Navbar.Brand as={Link} to="/" className="navbar-brand" expand="lg">
           CineScope
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar" />
@@ -55,7 +55,7 @@ export const NavigationBar = ({ user, onLoggedOut, setFilteredMovies, movies }) 
                 <Nav.Link as={Link} to="/profile">
                   Profile
                 </Nav.Link>
-                <Nav.Link onClick={onLoggedOut} className="logoutbutton">Logout</Nav.Link>
+               
               </>
             )}
           </Nav>
@@ -70,7 +70,10 @@ export const NavigationBar = ({ user, onLoggedOut, setFilteredMovies, movies }) 
                 onChange={handleInputChange}
               />
             </Form>
-          )}
+          )} 
+          <Nav.Link onClick={onLoggedOut} className="logoutbutton">
+            <Button variant="outline-danger">Logout</Button>
+            </Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>
