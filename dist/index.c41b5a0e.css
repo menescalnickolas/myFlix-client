@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css2?family=Arsenal&display=swap";
 .card-body, .card-title, h5, .card-text, .btn-link {
   background-color: #fff;
   text-decoration: none;
@@ -21,19 +22,68 @@
 }
 
 img {
-  width: 40%;
+  width: 80%;
+}
+
+.movie-view {
+  margin-top: 25px;
+}
+
+p {
+  text-align: justify;
+  line-height: 25px;
+}
+
+.synopsis {
+  margin-top: 30px;
+}
+
+.back-button {
+  margin-top: 25px;
+}
+
+.modal {
+  line-height: 20px;
+}
+
+.user-delete {
+  margin-left: 330px;
+}
+
+.favorite-movies {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.favorite-movies .col {
+  margin-bottom: 1rem;
 }
 
 .user-info {
   margin: 30px;
 }
 
-.container, .navbar-light, .navbar-expand, .navbar-brand, .navbar-collapse, .nav-link, .d-flex {
-  background-color: #1561b0 !important;
+.user-update {
+  margin-bottom: 50px;
+  margin-left: 60px;
 }
 
-.texts {
-  color: #fff;
+.title {
+  margin: 0 auto 25px;
+}
+
+.navbar-custom {
+  margin-bottom: 25px;
+}
+
+.logoutbutton {
+  margin-left: 15px;
+}
+
+.navbar-brand {
+  font-family: Arsenal, sans-serif;
+  font-size: 50px;
+  font-weight: bold;
 }
 
 * {
