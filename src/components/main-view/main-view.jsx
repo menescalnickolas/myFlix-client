@@ -85,6 +85,7 @@ export const MainView = () => {
   };
 
   return (
+    
     <BrowserRouter>
       <NavigationBar
         user={user}
@@ -181,5 +182,6 @@ export const MainView = () => {
         </Routes>
       </Row>
     </BrowserRouter>
+    
   );
 };
