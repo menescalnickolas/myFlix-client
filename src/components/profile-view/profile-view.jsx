@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { UserInfo } from "./user-info";
-import { Link } from "react-router-dom";
 import { UserUpdate } from "./user-update";
-import { UserDelete } from "./user-deregister";
 import { FavoriteMovies } from "./favorite-movies";
 import { Button } from "react-bootstrap";
 import "./profile-view.scss";
@@ -30,23 +27,22 @@ export const ProfileView = ({ movies, user: initialUser, onToggleFavorite }) => 
         />
       </div>
       <div className="user-update">
-      <Button variant="primary" onClick={handleShowModal}>
+        <Button variant="light" onClick={handleShowModal}>
           Update User Information
         </Button>
         <UserUpdate
           name={user.Username}
           email={user.Email}
           birthday={user.Birthday}
-          password={user.Password} 
+          password={user.Password}
           show={showModal}
-          handleClose={handleCloseModal}/>
-      </div>
-      <div className="user-delete">
-        <UserDelete />
+          handleClose={handleCloseModal} />
       </div>
       <div className="favorite-movies">
-        <h3>Your favorite movies:</h3>
-        <FavoriteMovies movies={movies} user={user} setUser={setUser} onToggleFavorite={onToggleFavorite}/>
+      <h3 className="title">Your favorite movies:</h3>
+      <ul>
+      <FavoriteMovies movies={movies} user={user} setUser={setUser} onToggleFavorite={onToggleFavorite} />
+      </ul>
       </div>
     </div>
 
