@@ -13,7 +13,7 @@ export const SignupView = () => {
     const data = {
       Username: username,
       Password: password,
-      Email: email, 
+      Email: email,
       Birthday: birthday
     };
 
@@ -23,9 +23,9 @@ export const SignupView = () => {
       headers: {
         "Content-Type": "application/json"
       }
-    }).then ((response) => {
+    }).then((response) => {
       if (response.ok) {
-        alert ("Signup successful!");
+        alert("Signup successful!");
         window.location.reload();
       } else {
         alert("Signup failed! :(")
@@ -42,31 +42,31 @@ export const SignupView = () => {
         <Form.Control type="text" value={username}
           onChange={(e) => setUsername(e.target.value)}
           minLength="5"
-          required/>
+          required />
       </Form.Group>
-      
-      <Form.Group controlId="formPassword"> 
+      <br />
+      <Form.Group controlId="formPassword">
         <Form.Label>Password: </Form.Label>
         <Form.Control type="password" value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required/>
+          onChange={(e) => setPassword(e.target.value)}
+          required />
       </Form.Group>
-
-      <Form.Group controlId="formEmail"> 
+      <br />
+      <Form.Group controlId="formEmail">
         <Form.Label>Email: </Form.Label>
         <Form.Control type="email" value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required/>
+          onChange={(e) => setEmail(e.target.value)}
+          required />
       </Form.Group>
-
-      <Form.Group controlId="formBirthday"> 
+      <br />
+      <Form.Group controlId="formBirthday">
         <Form.Label>Date of Birth: </Form.Label>
         <Form.Control type="date" value={birthday}
-        onChange={(e) => setBirthday(e.target.value)}
-        required/>
+          onChange={(e) => setBirthday(e.target.value)}
+          required />
       </Form.Group>
-      
-      <Button variant="primary" type="submit">
+      <br />
+      <Button variant="light" type="submit">
         Submit
       </Button>
     </Form>
