@@ -42,9 +42,8 @@ export const UserDelete = () => {
   };
   return (
     <div className="delete-user">
-      <h1 className="delete-account">Delete Account</h1>
       <p>{message}</p>
-      <Button className="delete-button" onClick={handleDelete}>
+      <Button className="delete-button" variant="outline-danger" onClick={handleDelete}>
         Delete Account
       </Button>
     </div>
